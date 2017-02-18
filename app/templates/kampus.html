@@ -1,0 +1,120 @@
+{% extends "baselayout.html" %}
+
+{% block content %}
+
+
+<section >
+
+<div class="container">
+<h3>Enter Kampus Data: <font color="blue"> {{current_user.nickname }} </font> </h3>
+</br>
+</div>
+
+
+<div class="container">
+  <div class="row">
+
+
+<div class="col-xs-6">
+
+
+    <img style="margin: -10px -10px" src=static/img/campus.jpg />
+
+      <form action="kampus" method="POST">
+</br>
+            <h5> Enter lead hand</h5>
+
+            <input type="radio" name="hand" value="right" checked> Right
+            <input type="radio" name="hand" value="left"> Left
+            <input type="radio" name="hand" value="both"> Both
+
+</div>
+<div class="form-group">
+
+            <h5> Enter rung sequence</h5>
+
+        <div class="checkbox">
+            <input type="checkbox" name="rung1" id="rung1" value="1" checked/>
+            <label for="rung1">Rung 1</label>
+
+        </div>
+
+        <div class="checkbox">
+            <input type="checkbox" name="rung2" id="rung2" value="2" />
+            <label for="rung2">Rung 2</label>
+            <input type="hidden" name="rung2" value="0">
+
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="rung3" id="rung3" value="3" />
+            <label for="rung3">Rung 3</label>
+            <input type="hidden" name="rung3" value="0">
+
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="rung4" id="rung4" value="4" />
+            <label for="rung4">Rung 4</label>
+            <input type="hidden" name="rung4" value="0">
+
+
+
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="rung5" id="rung5" value="5" />
+            <label for="rung5">Rung 5</label>
+            <input type="hidden" name="rung5" value="0">
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="rung6" id="rung6" value="6" />
+            <label for="rung6">Rung 6</label>
+            <input type="hidden" name="rung6" value="0">
+
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="rung7" id="rung7" value="7" />
+            <label for="rung7">Rung 7</label>
+            <input type="hidden" name="rung7" value="0">
+
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="rung8" id="rung8" value="8"  />
+            <label for="rung8">Rung 8</label>
+            <input type="hidden" name="rung8" value="0">
+
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="rung9" id="rung9" value="9" />
+            <label for="rung9">Rung 9</label>
+            <input type="hidden" name="rung9" value="0">
+
+
+         </div>
+         </div>
+        <input class="btn btn-primary"  type="submit" value="Submit Kampus">
+
+
+
+</form>
+
+
+</div>
+
+  </div>
+</div>
+</section>
+
+
+
+
+<div class="col-sm-12">
+    {% for kampus in kampus %}
+    <div class="row">
+
+   <h6>  {{ kampus.name, kampus.hand, kampus.rung1, kampus.rung2, kampus.rung3, kampus.rung4, kampus.rung5, kampus.rung6, kampus.rung7, kampus.rung8, kampus.rung9, kampus.timestamp   }} </h6>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock content %}
