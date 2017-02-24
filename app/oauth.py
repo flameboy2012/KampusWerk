@@ -11,9 +11,11 @@ class OAuthSignIn(object):
 
     def __init__(self, provider_name):
         self.provider_name = provider_name
-        credentials = current_app.config['OAUTH_CREDENTIALS'][provider_name]
-        self.consumer_id = credentials['id']
-        self.consumer_secret = credentials['secret']
+        provider_id = 'OAUTH_CREDENTIALS_' + provider_name + '_ID'
+        provider_secret = 'OAUTH_CREDENTIALS_' + provider_name + '_SECRET'
+        # credentials = current_app.config['OAUTH_CREDENTIALS'][provider_name]
+        self.consumer_id = current_app.config[provider_id]
+        self.consumer_secret = current_app.config[provider_secret]
 
     def authorize(self):
         pass
@@ -37,7 +39,7 @@ class OAuthSignIn(object):
 
 class FacebookSignIn(OAuthSignIn):
     def __init__(self):
-        super(FacebookSignIn, self).__init__('facebook')
+        super(FacebookSignIn, self).__init__('FACEBOOK')
         self.service = OAuth2Service(
             name='facebook',
             client_id=self.consumer_id,
@@ -80,7 +82,7 @@ def oauth_decode(data):
 
 class GoogleSignIn(OAuthSignIn):
     def __init__(self):
-        super(GoogleSignIn, self).__init__('google')
+        super(GoogleSignIn, self).__init__('GOOGLE')
 
         self.service = OAuth2Service(
                 name='google',
@@ -115,7 +117,7 @@ class GoogleSignIn(OAuthSignIn):
 
 class TwitterSignIn(OAuthSignIn):
     def __init__(self):
-        super(TwitterSignIn, self).__init__('twitter')
+        super(TwitterSignIn, self).__init__('TWITTER')
         self.service = OAuth1Service(
             name='twitter',
             consumer_key=self.consumer_id,
